@@ -1,0 +1,117 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">ADD NEW PROJECTION</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form action="/projections/add" th:method="POST" style="color:white">
+                    <input id="id" type="hidden" name="id" th:value="(${movieProjection} != null ? ${movieProjection.getProjection_Id()} : '')">
+                    <div class="form-group">
+                        <label for="projection_id">ID</label>
+                        <input type="text"
+                               class="form-control"
+                               id="projection_id"
+                               name="projection_id"
+                               th:value="(${movieProjection} != null ? ${movieProjection.getProjection_Id()} : '')"
+                               required
+                               placeholder="Your desired ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="projection_movie_start">Projection Movie Start</label>
+                        <input type="text"
+                               class="form-control"
+                               id="projection_movie_start"
+                               name="projection_movie_start"
+                               th:value="(${movieProjection} != null ? ${movieProjection.getProjection_movie_start()} : '')"
+                               required
+                               placeholder="Enter Movie Start">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projection_movie_end">projection_movie_end</label>
+                        <input type="text"
+                               class="form-control"
+                               id="projection_movie_end"
+                               name="projection_movie_end"
+                               th:value="(${movieProjection} != null ? ${movieProjection.getProjection_movie_end()} : '')"
+                               required
+                               placeholder="Enter Projection Movie End">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projection_screening_date">projection_screening_date</label>
+                        <input type="text"
+                               class="form-control"
+                               id="projection_screening_date"
+                               name="projection_screening_date"
+                               th:value="(${movieProjection} != null ? ${movieProjection.getProjection_screening_date()} : '')"
+                               required
+                               placeholder="Enter Projection Screening Date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projection_type">projection_type</label>
+                        <input type="text"
+                               class="form-control"
+                               id="projection_type"
+                               name="projection_type"
+                               th:value="(${movieProjection} != null ? ${movieProjection.getProjection_type()} : '')"
+                               required
+                               placeholder="Enter Projection Type">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projection_price">projection_price</label>
+                        <input type="text"
+                               class="form-control"
+                               id="projection_price"
+                               name="projection_price"
+                               th:value="(${movieProjection} != null ? ${movieProjection.getProjection_price()} : '')"
+                               required
+                               placeholder="Enter Projection Price">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Movie</label>
+                        <select name="movie_id" class="form-control">
+                            <option th:if="${movieProjection} != null"
+                                    th:selected="${movieProjection.getMovie() != null &&
+                                moviePRojection.getMovie().getMovie_id() == movie.getMovie_id()}"
+                                    th:each="movie : ${movie}"
+                                    th:value="${movie.getMovie_id()}"
+                                    th:text="${movie.getMovie_name()}">
+                            </option>
+                            <option th:if="${movieProjection} == null"
+                                    th:each="movie : ${movie}"
+                                    th:value="${movie.getMovie_id()}"
+                                    th:text="${movie.getMovie_name()}">
+                            </option>
+                        </select>
+                        <label>Auditorium</label>
+                        <select name="auditorium_id" class="form-control" autocomplete="off">
+                            <option th:if="${auditorium != null}"
+                                    th:selected="${auditorium.getAuditorium_id() != null}"
+                                    th:each="auditorium : ${auditorium}"
+                                    th:value="${auditorium.getAuditorium_id()}"
+                                    th:text="${auditorium.getAuditorium_name()}" autocomplete="off">
+                            </option>
+                            <option th:if="${auditorium} == null"
+                                    th:each="auditorium: ${auditorium}"
+                                    th:value="${auditorium.getAuditorium_id()}"
+                                    th:text="${auditorium.getAuditorium_name()}" autocomplete="off">
+                            </option>
+                        </select>
+                    </div>
+
+                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                    <a type="button" class="btn btn-primary" href="/projections">Back</a>
+                    <a type="button" class="btn btn-primary" href="/movies/add-form">Missing Movie? Add New Movie</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</th:block>

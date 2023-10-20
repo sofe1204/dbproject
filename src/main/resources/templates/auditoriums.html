@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base href="${pageContext.request.contextPath}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Auditoriums</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{../css/styleAuditoriums.css}"/>
+</head>
+
+
+<body>
+<div class="navbar">
+<!--    <header th:replace="fragments/header.html" >-->
+
+<!--    </header>-->
+    <main>
+        <div class="container-main">
+            <div class="h1Combined">
+                <h1 style="color:white;margin-left: 480px;">Movie <h1 style="color:red">Zilla</h1></h1>
+            </div>
+            <div class="content">
+                <!-- Page content -->
+                <div class="header-one">
+                </div>
+                <div class="centered">
+                    <table style="border-collapse: collapse;
+    color: white;
+    font-size: 2.5rem;
+    background: rgba(0,0,0,0.4);
+    margin-left: 210px;
+    margin-top: 50px;">
+                        <thead style="border-bottom: 1px solid rgba(255, 51, 51,0.8)">
+                        <tr>
+                            <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Auditorium Name</td>
+                            <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Auditorium Capacity</td>
+                            <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Firm Name</td>
+                            <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Firm City</td>
+                            <td>Firm Adress</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="auditorium : ${auditorium}">
+                            <td th:text="${auditorium.getAuditorium_name()}"/>
+                            <td th:text="${auditorium.getAuditorium_capacity()}"/>
+                            <td th:text="${auditorium.getFirm().getFirm_name()}"/>
+                            <td th:text="${auditorium.getFirm().getFirm_city()}"/>
+                            <td th:text="${auditorium.getFirm().getFirm_adress()}"/>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--<a class="btn" href="/projections">Projections</a>-->
+        </div>
+    </main>
+    <!--<footer th:replace="fragments/footer"/>-->
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,110 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">ADD NEW MOVIE</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form th:action="@{/movies/add}" th:method="POST">
+                    <input id="id" type="hidden" name="id" th:value="(${movies} != null ? ${movies} : '')">
+
+
+                        <div class="form-group">
+                            <label for="movie_id">Movie ID</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="movie_id"
+                                   name="movie_id"
+                                   th:value="(${movies} != null ? ${movies.getMovie_id()} : '')"
+                                   required
+                                   placeholder="Your desired ID">
+                        </div>
+
+
+                        <div class="form-group">
+                        <label for="movie_name">Movie name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="movie_name"
+                               name="movie_name"
+                               th:value="(${movies} != null ? ${movies.getMovie_name()} : '')"
+                               required
+                               placeholder="Enter Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="movie_age_category">Movie Age Category</label>
+                        <input type="text"
+                               class="form-control"
+                               id="movie_age_category"
+                               name="movie_age_category"
+                               th:value="(${movies} != null ? ${movies.getMovie_age_category()} : '')"
+                               required
+                               placeholder="Enger Age Category">
+                    </div>
+                    <div class="form-group">
+                        <label for="movie_film_director">Movie Film Director</label>
+                        <input type="text"
+                               class="form-control"
+                               id="movie_film_director"
+                               name="movie_film_director"
+                               th:value="(${movies} != null ? ${movies.getMovie_film_director()} : '')"
+                               required
+                               placeholder="Enter Film Director">
+                    </div>
+                    <div class="form-group">
+                        <label for="movie_production">Movie Production</label>
+                        <input type="text"
+                               class="form-control"
+                               id="movie_production"
+                               name="movie_production"
+                               th:value="(${movies} != null ? ${movies.getMovie_production()} : '')"
+                               required
+                               placeholder="Enter Age Category">
+                    </div>
+                    <div class="form-group">
+                        <label for="movie_cast">Movie Cast</label>
+                        <input type="text"
+                               class="form-control"
+                               id="movie_cast"
+                               name="movie_cast"
+                               th:value="(${movies} != null ? ${movies.getMovie_cast()} : '')"
+                               placeholder="Enter Cast">
+                    </div>
+                    <div class="form-group">
+                        <label for="movie_time_duration">Movie Time Duration</label>
+                        <input type="text"
+                               class="form-control"
+                               id="movie_time_duration"
+                               name="movie_time_duration"
+                               th:value="(${movies} != null ? ${movies.getMovie_time_duration()} : '')"
+                               placeholder="Enter Time Duration">
+                    </div>
+                    <div class="form-group">
+                    <label>Genre</label>
+                    <select name="genre_id" class="form-control" autocomplete="off">
+                        <option th:if="${genre} != null"
+                                th:selected="${genre.getGenre_id() != null}"
+                                th:each="genre : ${genre}"
+                                th:value="${genre.getGenre_id()}"
+                                th:text="${genre.getGenre_name()}">
+                        </option>
+                        <option th:if="${genre} == null"
+                                th:each="genre : ${genre}"
+                                th:value="${genre.getGenre_id()}"
+                                th:text="${genre.getGenre_name()}">
+                        </option>
+                    </select>
+                    </div>
+                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                    <a type="button" class="btn btn-primary" href="/movies">Back</a>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</th:block>

@@ -1,0 +1,146 @@
+<div xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Reserve</title>
+        <link th:href="@{/styles/movieCSS/main.css}" rel="stylesheet" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+<!--    <header th:replace="fragments/header"/>-->
+    <section class="jumbotron text-center" xmlns:th="http://www.thymeleaf.org">
+        <div class="container container-dark">
+            <h1 style="font-size:1.5rem" class="jumbotron-heading ">RESERVED SEATS FOR THIS PROJECTION</h1>
+        </div>
+    </section>
+    <main class="main main-dark bg-light">
+        <div class="content">
+            <!-- Page content -->
+            <div class="header-one">
+            </div>
+            <div class="centered">
+                <table class="table table-bordered table-light bg-light table-striped" style="font-size:1.8rem">
+                    <thead>
+                    <tr>
+                        <td>Number</td>
+                        <td>Auditorium Name</td>
+                        <td>Capacity</td>
+                        <td>Firm Name</td>
+                        <td>Firm Address</td>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="seats : ${seats11}">
+                        <td th:text="${seats.getSeat_number()}"/>
+                        <td th:text="${seats.getSeatCompositeKey().getAuditorium().getAuditorium_name()}"/>
+                        <td th:text="${seats.getSeatCompositeKey().getAuditorium().getAuditorium_capacity()}"/>
+                        <td th:text="${seats.getSeatCompositeKey().getAuditorium().getFirm().getFirm_name()}"/>
+                        <td th:text="${seats.getSeatCompositeKey().getAuditorium().getFirm().getFirm_adress()}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <form action="/reserve/projection/add" method="POST">
+
+                    <div class="form-group" />
+                    <label>Auditorium</label>
+                    <select name="auditorium_id" class="form-control" autocomplete="off">
+                        <option th:if="${auditorium} != null"
+                                th:selected="${auditorium.getAuditorium_id() != null}"
+                                th:each="auditorium : ${auditorium}"
+                                th:value="${auditorium.getAuditorium_id()}"
+                                th:text="${auditorium.getAuditorium_name()}">
+                        </option>
+                        <option th:if="${auditorium} == null"
+                                th:each="auditorium : ${auditorium}"
+                                th:value="${auditorium.getAuditorium_id()}"
+                                th:text="${auditorium.getAuditorium_name()}">
+                        </option>
+                    </select>
+            </div>
+
+            <div class="form-group">
+                <label>Payment Type</label >
+                <select name="payment_type_id" class="form-control" autocomplete="off">
+                    <option th:if="${paymentType} != null"
+                            th:selected="${paymentType.getPayment_type_id() != null}"
+                            th:each="paymentType : ${paymentType}"
+                            th:value="${paymentType.getPayment_type_id()}"
+                            th:text="${paymentType.getPayment_type()}">
+                    </option>
+                    <option th:if="${paymentType} == null"
+                            th:each="paymentType : ${paymentType}"
+                            th:value="${paymentType.getPayment_type_id()}"
+                            th:text="${paymentType.getPayment_type()}">
+                    </option>
+                </select>
+
+                <label>Client</label >
+                <select name="user_id" class="form-control" autocomplete="off">
+                    <option th:if="${client} != null"
+                            th:selected="${client.getClientCompositeKey().getUser().getUser_id() != null}"
+                            th:each="client : ${client}"
+                            th:value="${client.getClientCompositeKey().getUser().getUser_id()}"
+                            th:text="${client.getClientCompositeKey().getUser().getUser_name()}">
+                    </option>
+                    <option th:if="${client} == null"
+                            th:each="client : ${client}"
+                            th:value="${client.getClientCompositeKey().getUser().getUser_id()}"
+                            th:text="${client.getClientCompositeKey().getUser().getUser_name()}">
+                    </option>
+                </select>
+
+                <label>Projection ID</label>
+                <select name="projection_id" class="form-control" autocomplete="off">
+                    <option th:if="${projections} != null"
+                            th:selected="${projections.getProjection_id() != null}"
+                            th:each="projections : ${projections}"
+                            th:value="${projections.getProjection_id()}"
+                            th:text="${projections.getProjection_id()}">
+                    </option>
+                    <option th:if="${projections} == null"
+                            th:each="projections : ${projections}"
+                            th:value="${projections.getProjection_id()}"
+                            th:text="${projections.getProjection_id()}">
+                    </option>
+                </select>
+
+                <label>Seat</label>
+                <select name="seat_id" class="form-control" autocomplete="off">
+                    <option th:if="${seatsAll != null}"
+                            th:selected="${seatsAll.getSeatCompositeKey().getSeat_id() != null &&
+                seatsAll.getSeatCompositeKey().getAuditorium.getAuditorium_id() != null
+                }"
+                            th:each="seatsAll : ${seatsAll}"
+                            th:value="${seatsAll.getSeatCompositeKey().getSeat_id()}"
+                            th:text="${seatsAll.getSeatCompositeKey().getSeat_id()}" autocomplete="off">
+                    </option>
+                    <option th:if="${seatsAll} == null"
+                            th:each="seatsAll: ${seatsAll}"
+                            th:value="${seatsAll.getSeatCompositeKey().getSeat_id()}"
+                            th:text="${seatsAll.getSeatCompositeKey().getSeat_id()}" autocomplete="off">
+                    </option>
+                </select>
+            </div>
+            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+            <a type="button" class="btn btn-primary" href="/projections">Back</a>
+            </form>
+        </div>
+</div>
+
+</main><footer th:replace="fragments/footer"/>
+<!-- Footer -->
+<!---->
+</body>
+</html>
+</div>

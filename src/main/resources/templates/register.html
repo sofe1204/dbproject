@@ -1,0 +1,57 @@
+
+
+<div class="container"  xmlns:th="http://www.w3.org/1999/xhtml" >
+    <h1 th:if="${hasError}" th:text="${error}"></h1>
+</div>
+<div class="container" style="background-color: rgba(0,0,0,0.5);margin-top: 3%; ">
+    <h2 class="form-signin-heading" style="margin-bot: 15%;color:white;">Register</h2>
+    <form class="form-signin mt-xl-5" method="post" action="/register">
+
+        <p>
+            <label for="user_username" class="sr-only">Username</label>
+            <input type="text" id="user_username" name="user_username" class="form-control" placeholder="Username" required=""
+                   autofocus="" style="margin-bottom: 5%;margin-left:10%">
+        </p>
+        <p>
+            <label for="user_password" class="sr-only">Password</label>
+            <input type="password" id="user_password" name="user_password" class="form-control" placeholder="Password"
+                   required="" style="margin-bottom: 5%;margin-left:10%">
+        </p>
+        <p>
+            <label for="user_repeatedPassword" class="sr-only">Repeat Password</label>
+            <input type="password" id="user_repeatedPassword" name="user_repeatedPassword" class="form-control"
+                   placeholder="Repeat Password" required="" style="margin-bottom: 5%;margin-left:10%">
+        </p>
+
+        <p>
+            <label for="user_name" class="sr-only">Name</label>
+            <input type="text" id="user_name" name="user_name" class="form-control" placeholder="Name" required="" autofocus="" style="margin-bottom: 5%;margin-left:10%">
+        </p>
+        <p>
+            <label for="user_surname" class="sr-only">Surname</label>
+            <input type="text" id="user_surname" name="user_surname" class="form-control" placeholder="Surname" required=""
+                   autofocus="" style="margin-bottom: 5%;margin-left:10%">
+        </p>
+        <p>
+            <label for="user_phone_number" class="sr-only">Phone number</label>
+            <input type="text" id="user_phone_number" name="user_phone_number" class="form-control" placeholder="Phone Number" required="" autofocus="" style="margin-bottom: 5%;margin-left:10%">
+        </p>
+        <p>
+            <label for="user_email" class="sr-only">E-mail</label>
+            <input type="text" id="user_email" name="user_email" class="form-control" placeholder="E-mail" required="" autofocus="" style="margin-bottom: 5%;margin-left:10%">
+        </p>
+
+        <p>
+        <div class="form-check form-check-inline" style="margin-bottom: 3%;margin-left:37%;">
+            <input class="form-check-input" name="user_role" type="radio" id="ROLE_EMPLOYEE" value="ROLE_EMPLOYEE">
+            <label class="form-check-label" for="ROLE_EMPLOYEE" style="color:white;font-size: 2rem">Employee</label>
+        </div>
+        <div class="form-check form-check-inline" style="margin-bottom: 3%">
+            <input class="form-check-input" name="user_role"  type="radio" id="ROLE_CLIENT" value="ROLE_CLIENT">
+            <label class="form-check-label" for="ROLE_CLIENT" style="color:white;font-size: 2rem">Client</label>
+        </div>
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+    <a href="/login" class="btn btn-block btn-light">Already have an account? Login here!</a>
+</div>

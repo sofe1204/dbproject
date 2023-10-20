@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base href="${pageContext.request.contextPath}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Movies</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{../css/styleMovies.css}"/>
+</head>
+
+<body>
+<div class="navbar">
+    <main>
+        <div class="container-main">
+            <div class="h1Combined">
+                <h1 style="color:white">Movie <h1 style="color:red">Zilla</h1></h1>
+            </div>
+            <div class="content">
+                <!-- Page content -->
+                <div class="header-one">
+                </div>
+                <div class="centered" style="background-color: rgba(0,0,0,0.4)">
+                    <h1 style="font-size:1.5rem; color:white;margin-top: 10%">This is a list of all advanced reports that we have</h1>
+                    <a href="/advanced1"><button class="btn2"  style="margin-bottom: 5%;margin-left: 25%">Report for Top Three Genres</button></a>
+                    <a href="/advanced2"><button class="btn2"  style="margin-bottom: 5%;margin-left: 25%">View Advanced 2</button></a>
+                    <a href="/advanced3"><button class="btn2"  style="margin-bottom: 5%;margin-left: 25%">View Advanced 3</button></a>
+                    <a href="/advanced4"><button class="btn2"  style="margin-bottom: 5%;margin-left: 25%">View Advanced 4</button></a>
+                    <a href="/advanced5"><button class="btn2"  style="margin-bottom: 5%;margin-left: 25%">View Advanced 5</button></a>
+                    <a href="/advanced6"><button class="btn2"  style="margin-bottom: 5%;margin-left: 25%">View Advanced 6</button></a>
+                </div>
+            </div>
+            <!--<a class="btn" href="/projections">Projections</a>-->
+        </div>
+    </main>
+    <!--<footer th:replace="fragments/footer"/>-->
+</div>
+</body>
+
+
+
+
+

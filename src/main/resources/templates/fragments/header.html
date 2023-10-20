@@ -1,0 +1,30 @@
+<head>    <link rel="stylesheet" type="text/css" th:href="@{../css/masterCss.css}"/></head>
+<header xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" style="
+    padding: 30px 10%;
+    max-width: 100%;
+    height: 15%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;">
+        <a href="/home"><img class="logo" th:src="@{../images/LOGOPNG2.png}" alt="logo"></a>
+         <p style="font-size:20px;color: white;margin-right: 10px;margin-top: 7px  ">
+             Welcome:</p><th:block th:if="${#request.getRemoteUser()!=null}"
+                                th:text="${#request.getRemoteUser()}"/>
+            <ul class="nav_links">
+                <li><a href="/movies">MOVIES</a></li>
+                <li><a href="/projections">PROJECTIONS</a></li>
+                <li><a href="/auditoriums" style="margin-right: 5px">AUDITORIUMS</a></li>
+            </ul>
+        <div class="right">
+
+
+            <div sec:authorize="isAuthenticated()">
+                <a href="/logout"style="margin-right: 10px" >Log out</a>
+            </div>
+            <div sec:authorize="!isAuthenticated()">
+                <a href="/login" style="margin-right: 40px" >Log in</a>
+                <a href="/register" style="margin-right: 55px" >Register</a>
+            </div>
+<!--            <a class="reg" href="/register">LOGIN</a>-->
+<!--          <a class="log" href="/login">REGISTER</a>-->
+        </div>
+    </header>

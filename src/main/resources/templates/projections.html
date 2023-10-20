@@ -1,0 +1,96 @@
+   <!DOCTYPE html>
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <base href="${pageContext.request.contextPath}">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Movies</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" th:href="@{../css/projection.css}"/>
+    </head>
+
+    <body>
+    <div class="navbar">
+        <!--    <header th:replace="fragments/header.html" >-->
+        <!--&lt;!&ndash;        <a href="/home"><img class="logo" th:src="@{../images/LOGOPNG2.png}" alt="logo"></a>&ndash;&gt;-->
+        <!--&lt;!&ndash;        <ul class="nav_links">&ndash;&gt;-->
+        <!--&lt;!&ndash;            <li><a href="/movies">MOVIES</a></li>&ndash;&gt;-->
+        <!--&lt;!&ndash;            <li><a href="/projections">PROJECTIONS</a></li>&ndash;&gt;-->
+        <!--&lt;!&ndash;            <li><a href="/auditoriums">AUDITORIUMS</a></li>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;        </ul>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;        <div class="right">&ndash;&gt;-->
+        <!--&lt;!&ndash;            <li><a class="reg" href="/login">LOGIN</a></li>&ndash;&gt;-->
+        <!--&lt;!&ndash;            <li><a class="log" style="color: red" href="/register">REGISTER</a></li>&ndash;&gt;-->
+        <!--&lt;!&ndash;        </div>&ndash;&gt;-->
+        <!--    </header>-->
+        <main>
+            <div class="container-main">
+                <div class="h1Combined">
+                    <th:block sec:authorize="hasRole('ROLE_EMPLOYEE')">
+                        <div sec:authorize="hasRole('ROLE_EMPLOYEE')" class="row" >
+                            <div class="col-xs-12 col-xs-12" style="float:top" id="projection-add" sec:authorize="hasRole('ROLE_EMPLOYEE')">
+                                <!--                                    <form th:method="POST" th:action="@{/projections/add-form}">-->
+                                <a href="/projections/add-form" class="btn btn-block btn-dark add-product-btn" >
+                                    ADD NEW PROJECTION
+                                </a>
+                                <!--                                    </form>-->
+                            </div>
+                            <!--                                href="/projections/add-form"-->
+                        </div>
+                    </th:block>
+                    <h1 style="color:white">Movie <h1 style="color:red">Zilla</h1></h1>
+                </div>
+                <div class="content">
+                    <!-- Page content -->
+                    <div class="header-one">
+                    </div>
+                    <div class="centered">
+                        <table style="font-size:3.0rem;">
+                            <thead style="border-bottom: 1px solid rgba(255, 51, 51,0.8)">
+                            <tr>
+                                <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Movie Name</td>
+                                <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Projection Type</td>
+                                <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Screening Date</td>
+                                <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Projection Price</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="movieprojection : ${movieprojection}">
+
+
+                                <td th:text="${movieprojection.movie.getMovie_name()} "/>
+                                <td th:text="${movieprojection.getProjection_type()} "/>
+                                <td th:text="${movieprojection.getProjection_screening_date()} "/>
+                                <td th:text="${movieprojection.getProjection_price()} "/>
+
+                                <td class="text-right">
+                                    <form th:action="@{/reserve/projection}">
+                                        <button class="btn btn-sm btn-danger view-product" type="submit" th:name="projection_id" th:value="${movieprojection.getProjection_id()}">RESERVE</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--<a class="btn" href="/projections">Projections</a>-->
+            </div>
+        </main>
+        <!--<footer th:replace="fragments/footer"/>-->
+    </div>
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+

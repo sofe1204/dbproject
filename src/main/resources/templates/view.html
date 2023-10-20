@@ -1,0 +1,67 @@
+<div xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Projections Preview</title>
+        <link th:href="@{/styles/movieCSS/main.css}" rel="stylesheet" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+    <body>
+    <header>
+    <section class="jumbotron text-center" xmlns:th="http://www.thymeleaf.org">
+        <div class="container">
+            <h1 style="font-size:1.5rem" class="jumbotron-heading">DETAILED PROJECTIONS OF YOUR SELECTED MOVIE</h1>
+            <a href="/movies"><p>Go back to movies page</p></a>
+        </div>
+    </section>
+    </header>
+    <main>
+        <div class="content">
+
+
+            <!-- Page content -->
+            <div class="header-one">
+            </div>
+            <div class="centered">
+
+                <table  class="table table-bordered table-light bg-light table-striped" style="font-size:1.8rem;">
+                    <div class="table-responsive-xl col mb-3">
+                        <div class="row">
+                        </div>
+                        <thead>
+                        <tr>
+                            <td>Screening Date</td>
+                            <td>Starting</td>
+                            <td>Ending</td>
+                            <td>Type</td>
+                            <td>Price</td>
+                            <td>Movie Name</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="moviegoer : ${moviegoer}">
+                            <td th:text="${moviegoer.getProjection_screening_date()} "/>
+                            <td th:text="${moviegoer.getProjection_movie_start()}"/>
+                            <td th:text="${moviegoer.getProjection_movie_end()} "/>
+                            <td th:text="${moviegoer.getProjection_type()} "/>
+                            <td th:text="${moviegoer.getProjection_price()} "/>
+                            <td th:text="${moviegoer.movie.getMovie_name()} "/>
+                            <!--<td th:text="${#calendars.format()}">July 11, 2012 2:17:16 PM CDT</td>-->
+                        </tr>
+                        </tbody>
+                    </div>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    </body>
+    </html>
+</div>
+
+
+
+
+

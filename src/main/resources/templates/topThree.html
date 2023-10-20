@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base href="${pageContext.request.contextPath}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Movies</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{../css/styleMovies.css}"/>
+</head>
+
+<body>
+<div class="navbar">
+    <!--    <header th:replace="fragments/header.html" >-->
+    <!--&lt;!&ndash;        <a href="/home"><img class="logo" th:src="@{../images/LOGOPNG2.png}" alt="logo"></a>&ndash;&gt;-->
+    <!--&lt;!&ndash;        <ul class="nav_links">&ndash;&gt;-->
+    <!--&lt;!&ndash;            <li><a href="/movies">MOVIES</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <li><a href="/projections">PROJECTIONS</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <li><a href="/auditoriums">AUDITORIUMS</a></li>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;        </ul>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;        <div class="right">&ndash;&gt;-->
+    <!--&lt;!&ndash;            <li><a class="reg" href="/login">LOGIN</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <li><a class="log" style="color: red" href="/register">REGISTER</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;        </div>&ndash;&gt;-->
+    <!--    </header>-->
+    <main>
+        <div class="container-main">
+            <div class="h1Combined">
+                <h1 style="color:white">Movie <h1 style="color:red">Zilla</h1></h1>
+            </div>
+            <div class="content">
+                <!-- Page content -->
+                <div class="header-one">
+                </div>
+                <div class="centered">
+                    <table>
+                        <thead style="border-bottom: 1px solid rgba(255, 51, 51,0.8)">
+                        <tr>
+                            <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Name</td>
+                            <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Genre Name</td>
+                            <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Age Category</td>
+                            <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Time Duration</td>
+                            <td style="border-right: 1px solid rgba(255, 51, 51,0.8)">Movie Cast</td>
+                            <td>Film Director</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="movies : ${movie}">
+                            <td th:text="${movies.getMovieGenreKey().getMovie().getMovie_name()}"  />
+                            <td th:text="${movies.getMovieGenreKey().getGenre().getGenre_name()}"/>
+                            <td th:text="${movies.getMovieGenreKey().getMovie().getMovie_age_category()} "/>
+                            <td th:text="${movies.getMovieGenreKey().getMovie().getMovie_time_duration()} "/>
+                            <td th:text="${movies.getMovieGenreKey().getMovie().getMovie_cast()} "/>
+                            <td th:text="${movies.getMovieGenreKey().getMovie().getMovie_film_director()} "/>
+                            <td class="text-right">
+                                <form th:action="@{/movie/projections/detailed-preview/}">
+                                    <button class="btn2" type="submit" th:name="movie_id" th:value="${movies.getMovieGenreKey().getMovie().getMovie_id()}">View Projections</button>
+                                </form>
+                                </th:block>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--<a class="btn" href="/projections">Projections</a>-->
+        </div>
+    </main>
+    <!--<footer th:replace="fragments/footer"/>-->
+</div>
+</body>
+
+
+
+
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base href="${pageContext.request.contextPath}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome to MovieZilla</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{../css/style.css}"/>
+
+</head>
+
+<body>
+<div class="navbar">
+<!--    <header th:replace="fragments/header.html">-->
+<!--    </header>-->
+    <main>
+        <div class="container-main">
+            <div class="h1Combined" style="margin-bottom: 5%">
+            <h1 style="color:white">Movie <h1 style="color:red">Zilla</h1></h1>
+            </div>
+                <p style="text-align: center;margin-bottom: 2%">
+                    Are you interested in the best movies out there? Feel free to click the button below,
+                    and view all of our projections!
+                </p>
+            <a class="btn" th:href="@{/projections}">Projections</a>
+        </div>
+    </main>
+    <!--<footer th:replace="fragments/footer"/>-->
+</div>
+</body>
+</html>

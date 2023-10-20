@@ -1,0 +1,37 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Make a reservation</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form action="/reserve/add" method="POST">
+                    <input id="id" type="hidden" name="id" th:value="(${reservation} != null ? ${reservation} : '')">
+
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="reservation_id">Movie ID</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="reservation_id"
+                                   name="reservation_id"
+                                   th:value="(${reservation} != null ? ${reservation.reservation_id} : '')"
+                                   required
+                                   placeholder="Your desired ID">
+                        </div>
+
+
+                            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                            <a type="button" class="btn btn-primary" href="/movies">Back</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+</th:block>
